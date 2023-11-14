@@ -1,0 +1,46 @@
+.todo__task {
+  display: flex;
+  gap: 25px;
+}
+
+.button_menu {
+  visibility: hidden;
+}
+
+.todo__task:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.todo__task-body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+}
+
+.todo__task-body:hover .button_menu {
+  visibility: visible;
+}
+
+.todo__task-control {
+  display: flex;
+  bottom: 0;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  gap: 5px;
+  background-color: rgb(255 255 255 / 20%);
+  backdrop-filter: blur(2px);
+}
+
+.todo__task-text {
+  position: relative;
+  flex: 1;
+  padding: 15px;
+  font-size: 20px;
+}
+

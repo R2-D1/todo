@@ -1,0 +1,75 @@
+.todo {
+  position: relative;
+  background-color: var(--secondary-color);
+  padding: 30px;
+}
+
+.todo__logo {
+  position: absolute;
+  height: 30px;
+  top: -30px;
+  padding: 0 30px;
+  font-size: 35px;
+  line-height: 1;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  font-family: CygreBlack, Arial, sans-serif;
+}
+
+.todo__logo-text {
+  position: relative;
+  top: -6px
+}
+
+.todo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  line-height: 1;
+
+  .button {
+    margin-left: 10px;
+  }
+}
+
+.todo__progress {
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+  font-family: CygreBlack, Arial, sans-serif;
+  padding: 10px 30px;
+  font-size: 35px;
+}
+
+.todo__tasks {
+  list-style: none;
+}
+
+.todo__task {
+  position: relative;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.todo__task:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.todo__form-container {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  padding: 20px;
+  background-color: var(--main-color);
+}
+
+.todo__form {
+  display: flex;
+  gap: 20px;
+}
+
+.todo__input-name {
+  flex: 1;
+}
