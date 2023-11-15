@@ -1,7 +1,7 @@
 <div class="task" [class.task__completed]="task.completed">
   <div class="task__header">
     <div class="task__priority task__priority_{{task.priority}}">
-      {{taskPriorityLabel}}
+      {{task.completed ? "Зроблено" : taskPriorityLabel}}
     </div>
   </div>
   <button (click)="completeTask()">complete</button>
@@ -9,28 +9,28 @@
     <p class="task-text">{{task.name}}</p>
     <button class="button button_menu" (click)="showControl()">
       <svg class="icon">
-        <use href="/assets/icons.svg#icon-menu"></use>
+        <use href="./assets/icons.svg#icon-menu"></use>
       </svg>
     </button>
     <div class="task-control" *ngIf="isControlShown">
       <button class="button button_s" (click)="completeTask()">
         <svg class="icon">
-          <use href="/assets/icons.svg#icon-checkmark"></use>
+          <use href="./assets/icons.svg#icon-checkmark"></use>
         </svg>
       </button>
       <button class="button button_s" (click)="showEditForm()">
         <svg class="icon">
-          <use href="/assets/icons.svg#icon-edit"></use>
+          <use href="./assets/icons.svg#icon-edit"></use>
         </svg>
       </button>
       <button class="button button_s" (click)="removeTask()">
         <svg class="icon">
-          <use href="/assets/icons.svg#icon-delete"></use>
+          <use href="./assets/icons.svg#icon-delete"></use>
         </svg>
       </button>
       <button class="button button__secondary button_s" (click)="hideControl()">
         <svg class="icon">
-          <use href="/assets/icons.svg#icon-clear"></use>
+          <use href="./assets/icons.svg#icon-clear"></use>
         </svg>
       </button>
     </div>

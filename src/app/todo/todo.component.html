@@ -6,10 +6,10 @@
     </div>
    <div class="todo__header-control">
      <button (click)="removeAllTasks()" class="button button_primary">
-       <svg class="icon"><use href="/assets/icons.svg#icon-delete"></use></svg>
+       <svg class="icon"><use href="./assets/icons.svg#icon-delete"></use></svg>
      </button>
      <button (click)="showCreateForm()" class="button button_primary">
-       <svg class="icon"><use href="/assets/icons.svg#icon-plus"></use></svg>
+       <svg class="icon"><use href="./assets/icons.svg#icon-plus"></use></svg>
      </button>
    </div>
   </div>
@@ -28,8 +28,8 @@
       <select formControlName="priority">
         <option [value]="option.value" *ngFor="let option of priorities">{{option.name}}</option>
       </select>
-      <button class="button button_s"><svg class="icon"><use href="/assets/icons.svg#icon-plus"></use></svg></button>
-      <button type="button" (click)="hideForm()" class="button button_s"><svg class="icon"><use href="/assets/icons.svg#icon-clear"></use></svg></button>
+      <button class="button button_s"><svg class="icon"><use href="./assets/icons.svg#icon-plus"></use></svg></button>
+      <button type="button" (click)="hideForm()" class="button button_s"><svg class="icon"><use href="./assets/icons.svg#icon-clear"></use></svg></button>
     </form>
   </div>
 </div>
