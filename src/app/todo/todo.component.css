@@ -42,7 +42,9 @@
 }
 
 .todo__tasks {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .todo__task {

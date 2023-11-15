@@ -44,6 +44,7 @@ export class TodoComponent implements OnInit {
     }
 
     this.tasks.push(task);
+    this.sortTasks();
     this.updateStorage();
     this.isFormShown = false;
   }
@@ -56,6 +57,7 @@ export class TodoComponent implements OnInit {
 
   public removeTask(index: number): undefined {
     this.tasks.splice(index, 1);
+    this.sortTasks();
     this.updateStorage();
     this.countCompletedTasks();
   }
@@ -85,6 +87,8 @@ export class TodoComponent implements OnInit {
   public completeTask(index: number): undefined {
     this.tasks[index].completed = true;
     this.countCompletedTasks();
+    this.sortTasks();
+    this.updateStorage();
   }
 
   public showCreateForm(): undefined {
@@ -111,5 +115,16 @@ export class TodoComponent implements OnInit {
 
   private countCompletedTasks(): undefined {
     this.completedTasks = this.tasks.filter(task => task.completed).length;
+  }
+
+  private sortTasks(): undefined {
+    this.tasks.sort((a: Task, b: Task) => {
+      if (a.completed === b.completed) {
+        // Both tasks have the same completion status, sort by priority
+        return + a.priority - + b.priority;
+      }
+      // Place uncompleted tasks before completed tasks
+      return a.completed ? 1 : -1;
+    });
   }
 }

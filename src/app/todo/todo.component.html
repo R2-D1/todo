@@ -15,7 +15,6 @@
   </div>
   <div class="todo__tasks">
     <app-task
-      class="todo__task"
       *ngFor="let task of tasks; let i = index"
       [task]="task"
       (removeTaskEmitter)="removeTask(i)"

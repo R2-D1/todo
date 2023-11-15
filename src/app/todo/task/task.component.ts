@@ -35,6 +35,7 @@ export class TaskComponent implements OnInit {
   }
 
   protected completeTask(): undefined {
+    this.isControlShown = false;
     this.completeTaskEmitter.emit();
   }
 
