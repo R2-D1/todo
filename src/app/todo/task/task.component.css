@@ -40,6 +40,15 @@
 
 .task__completed .complete-button {
   background-color: var(--accent-color);
+  outline-color: var(--accent-color);
+}
+
+.task__completed .task__info {
+  background-color: #c8c4c4;
+}
+
+.task__completed .task__text {
+  text-decoration: line-through;
 }
 
 .button_menu {
@@ -53,7 +62,7 @@
 .task {
   position: relative;
   display: flex;
-  flex: 1;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
   color: var(--secondary-color);
@@ -81,22 +90,19 @@
   backdrop-filter: blur(2px);
 }
 
-.task-info {
+.task__info {
   position: relative;
   display: flex;
   flex: 1;
   margin-left: 30px;
+  background-color: var(--main-color);
 }
 
-.task-text {
+.task__text {
   position: relative;
   flex: 1;
   padding: 15px;
   font-size: 20px;
-}
-
-.task-info {
-  background-color: var(--main-color);
 }
 
 
