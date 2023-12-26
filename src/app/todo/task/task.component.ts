@@ -1,11 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from "../../models/task.model";
 import {priorities} from "../../static-data/priorities";
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+    selector: 'app-task',
+    templateUrl: './task.component.html',
+    styleUrls: ['./task.component.css'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class TaskComponent implements OnInit {
   @Input() task!: Task;
