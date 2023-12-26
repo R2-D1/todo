@@ -4,14 +4,14 @@ import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import {TodoForm, TodoFormData} from "./todo.form";
 import {priorities} from "../static-data/priorities";
 import { TaskComponent } from './task/task.component';
-import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css'],
     standalone: true,
-    imports: [NgFor, TaskComponent, NgIf, FormsModule, ReactiveFormsModule]
+    imports: [TaskComponent, FormsModule, ReactiveFormsModule]
 })
 export class TodoComponent implements OnInit {
   public tasks: Task[] = [];

@@ -12,27 +12,29 @@
         <use href="./assets/icons.svg#icon-menu"></use>
       </svg>
     </button>
-    <div class="task-control" *ngIf="isControlShown">
-      <button class="button button_s" (click)="completeTask()">
-        <svg class="icon">
-          <use href="./assets/icons.svg#icon-checkmark"></use>
-        </svg>
-      </button>
-      <button class="button button_s" (click)="showEditForm()">
-        <svg class="icon">
-          <use href="./assets/icons.svg#icon-edit"></use>
-        </svg>
-      </button>
-      <button class="button button_s" (click)="removeTask()">
-        <svg class="icon">
-          <use href="./assets/icons.svg#icon-delete"></use>
-        </svg>
-      </button>
-      <button class="button button__secondary button_s" (click)="hideControl()">
-        <svg class="icon">
-          <use href="./assets/icons.svg#icon-clear"></use>
-        </svg>
-      </button>
-    </div>
+    @if (isControlShown) {
+      <div class="task-control">
+        <button class="button button_s" (click)="completeTask()">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-checkmark"></use>
+          </svg>
+        </button>
+        <button class="button button_s" (click)="showEditForm()">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-edit"></use>
+          </svg>
+        </button>
+        <button class="button button_s" (click)="removeTask()">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-delete"></use>
+          </svg>
+        </button>
+        <button class="button button__secondary button_s" (click)="hideControl()">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-clear"></use>
+          </svg>
+        </button>
+      </div>
+    }
   </div>
 </div>
