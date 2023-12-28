@@ -1,0 +1,12 @@
+.logo {
+  width: fit-content;
+  margin-left: 30px;
+  font-family: AKONY, sans-serif;
+  background-color: var(--accent-color);
+  padding: 5px 30px 0;
+  font-size: 20px;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  top: -12px;
+  z-index: 1;
+}

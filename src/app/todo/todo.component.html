@@ -1,40 +1,54 @@
 <div class="todo">
-  <h1 class="todo__logo"><span class="todo__logo-text">DOIT</span></h1>
-  <div class="todo__header">
-    <div class="todo__progress">
-      {{completedTasks}}/{{tasks.length}}
+  <div class="todo__body">
+
+    <div class="todo__header">
+      <div class="todo__progress">
+        {{ completedTasks }}/{{ tasks.length }}
+      </div>
+      <div class="todo__header-control">
+        <button (click)="removeAllTasks()" class="button button_primary">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-delete"></use>
+          </svg>
+        </button>
+        <button (click)="showCreateForm()" class="button button_primary">
+          <svg class="icon">
+            <use href="./assets/icons.svg#icon-plus"></use>
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="todo__header-control">
-      <button (click)="removeAllTasks()" class="button button_primary">
-        <svg class="icon"><use href="./assets/icons.svg#icon-delete"></use></svg>
-      </button>
-      <button (click)="showCreateForm()" class="button button_primary">
-        <svg class="icon"><use href="./assets/icons.svg#icon-plus"></use></svg>
-      </button>
+    <div class="todo__tasks">
+      @for (task of tasks;track task;let i = $index) {
+        <app-task
+          [task]="task"
+          (removeTaskEmitter)="removeTask(i)"
+          (showEditFormEmitter)="showEditForm(i)"
+          (completeTaskEmitter)="completeTask(i)"
+        ></app-task>
+      }
     </div>
-  </div>
-  <div class="todo__tasks">
-    @for (task of tasks; track task; let i = $index) {
-      <app-task
-        [task]="task"
-        (removeTaskEmitter)="removeTask(i)"
-        (showEditFormEmitter)="showEditForm(i)"
-        (completeTaskEmitter)="completeTask(i)"
-      ></app-task>
+    @if (isFormShown) {
+      <div class="todo__form-container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="todo__form">
+          <input type="text" formControlName="name" placeholder="Task name" class="todo__input-name">
+          <select formControlName="priority">
+            @for (option of priorities;track option) {
+              <option [value]="option.value">{{ option.name }}</option>
+            }
+          </select>
+          <button class="button button_s">
+            <svg class="icon">
+              <use href="./assets/icons.svg#icon-plus"></use>
+            </svg>
+          </button>
+          <button type="button" (click)="hideForm()" class="button button_s">
+            <svg class="icon">
+              <use href="./assets/icons.svg#icon-clear"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
     }
   </div>
-  @if (isFormShown) {
-    <div class="todo__form-container">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="todo__form">
-        <input type="text" formControlName="name" placeholder="Task name" class="todo__input-name">
-        <select formControlName="priority">
-          @for (option of priorities; track option) {
-            <option [value]="option.value">{{option.name}}</option>
-          }
-        </select>
-        <button class="button button_s"><svg class="icon"><use href="./assets/icons.svg#icon-plus"></use></svg></button>
-        <button type="button" (click)="hideForm()" class="button button_s"><svg class="icon"><use href="./assets/icons.svg#icon-clear"></use></svg></button>
-      </form>
-    </div>
-  }
 </div>

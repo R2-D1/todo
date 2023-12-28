@@ -1,7 +1,10 @@
+@import "./assets/styles/fonts.css";
+@import "./assets/styles/button.css";
+
 :root {
-  --main-color: #fff;
-  --secondary-color: #000;
-  --accent-color: #00FF19;
+  --main-color: #000;
+  --secondary-color: #edf1f4;;
+  --accent-color: #adff2f;
 }
 
 *, ::before, ::after {
@@ -34,10 +37,10 @@ body {
 }
 
 .container__body {
+  position: relative;
   width: 100%;
   max-width: 600px;
-  padding: 30px;
-  background-color: var(--main-color);
+  padding: 15px;
 }
 
 .icon {
@@ -45,75 +48,4 @@ body {
   height: 30px;
   fill: CurrentColor;
   stroke: CurrentColor;
-}
-
-.button {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #000;
-  display: inline-flex;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  justify-content: center;
-  color: #fff;
-}
-
-.button:hover {
-  background-color: var(--accent-color);
-}
-
-.button_primary {
-  background-color: #fff;
-  color: #000;
-}
-
-.button_s {
-  width: 35px;
-  height: 35px;
-}
-
-.button_s .icon {
-  width: 20px;
-  height: 20px;
-}
-
-.button_menu {
-  width: 30px;
-  background-color: transparent;
-  box-shadow: none;
-  color: #000;
-}
-
-.button_menu .icon {
-  width: 30px;
-}
-
-.button__secondary {
-  background-color: #fff;
-  color: #000;
-}
-
-.complete-button {
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--main-color);
-  color: var(--secondary-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 4px solid black;
-  outline: 4px solid #fff;
-}
-
-.complete-button:hover {
-  background-color: var(--accent-color);
-}
-
-.complete-button .icon {
-  width: 20px;
-  height: 20px;
 }
