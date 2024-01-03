@@ -1,6 +1,5 @@
 <div class="todo">
   <div class="todo__body">
-
     <div class="todo__header">
       <div class="todo__progress">
         {{ completedTasks }}/{{ tasks.length }}
@@ -19,7 +18,7 @@
       </div>
     </div>
     <div class="todo__tasks">
-      @for (task of tasks;track task;let i = $index) {
+      @for (task of tasks; track task; let i = $index) {
         <app-task
           [task]="task"
           (removeTaskEmitter)="removeTask(i)"
@@ -31,10 +30,15 @@
     @if (isFormShown) {
       <div class="todo__form-container">
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="todo__form">
-          <input type="text" formControlName="name" placeholder="Task name" class="todo__input-name">
-          <select formControlName="priority">
-            @for (option of priorities;track option) {
-              <option [value]="option.value">{{ option.name }}</option>
+          <input type="text" formControlName="name" placeholder="Task name" class="form-input todo__name">
+          <select formControlName="priority" class="form-select">
+            @for (option of priorities; track option; let first = $first) {
+              @if (first) {
+                {{ 'first' }}
+                <option [value]="option.value" selected>{{ option.name }}</option>
+              } @else {
+                <option [value]="option.value">{{ option.name }}</option>
+              }
             }
           </select>
           <button class="button button_s">

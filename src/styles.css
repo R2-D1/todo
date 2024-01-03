@@ -1,11 +1,7 @@
+@import "./assets/styles/variables.css";
 @import "./assets/styles/fonts.css";
 @import "./assets/styles/button.css";
-
-:root {
-  --main-color: #000;
-  --secondary-color: #edf1f4;;
-  --accent-color: #adff2f;
-}
+@import "./assets/styles/form.css";
 
 *, ::before, ::after {
   box-sizing: border-box;

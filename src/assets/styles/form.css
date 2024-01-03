@@ -1,0 +1,11 @@
+.form-input {
+  border-radius: 50px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.form-select {
+  /*appearance: none;*/
+  border-radius: 50px;
+  border: none;
+}

@@ -4,7 +4,7 @@
       {{task.completed ? "Зроблено" : taskPriorityLabel}}
     </div>
   </div>
-  <button (click)="completeTask()" class="button"><svg class="icon"><use href="./assets/icons.svg#icon-checkmark"></use></svg></button>
+  <button (click)="completeTask()" class="button button_primary"><svg class="icon"><use href="./assets/icons.svg#icon-checkmark"></use></svg></button>
   <div class="task__info">
     <p class="task__text">{{task.name}}</p>
     <button class="button button_menu" (click)="showControl()">
@@ -29,7 +29,7 @@
             <use href="./assets/icons.svg#icon-delete"></use>
           </svg>
         </button>
-        <button class="button button__secondary button_s" (click)="hideControl()">
+        <button class="button button_s" (click)="hideControl()">
           <svg class="icon">
             <use href="./assets/icons.svg#icon-clear"></use>
           </svg>
