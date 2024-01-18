@@ -55,11 +55,12 @@
 
 .todo__form-container {
   position: absolute;
-  top: 30px;
+  top: 11px;
   left: 30px;
   right: 30px;
-  padding: 20px 0;
+  padding: 25px 0;
   background-color: var(--main-color);
+  z-index: 5;
 }
 
 .todo__form {
@@ -69,6 +70,25 @@
 
 .todo__name {
   flex: 1;
+}
+
+.todo__empty {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-height: 340px;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__empty-text {
+  text-align: center;
+  font-size: 30px;
+  font-family: AKONY, sans-serif;
+}
+
+.todo__empty-icon {
+  font-size: 100px;
 }
 
 .days {

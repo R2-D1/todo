@@ -9,40 +9,52 @@
           pulse: currentDay === day
         }"
       >
-       <span class="days__item-name">{{ day }}</span>
+        <span class="days__item-name">{{ day }}</span>
       </button>
     }
   </div>
   <div class="todo__body">
-    <div class="todo__header">
-      <div class="todo__progress">
-        {{ completedTasks }} / {{ tasksLength }}
-      </div>
-      <div class="todo__header-control">
-        <button (click)="removeAllTasks()" class="button button_primary">
-          <svg class="icon">
-            <use href="./assets/icons.svg#icon-delete"></use>
-          </svg>
-        </button>
+    @if (!completedTasks && !tasksLength) {
+      <div class="todo__empty">
         <button (click)="showCreateForm()" class="button button_primary">
           <svg class="icon">
             <use href="./assets/icons.svg#icon-plus"></use>
           </svg>
         </button>
+        <div class="todo__empty-text">Do something!</div>
+        <div class="todo__empty-icon">😡</div>
       </div>
-    </div>
-    <div class="todo__tasks">
-      @for (task of tasks; track task; let i = $index) {
-        @if(task.day === activeDay) {
-        <app-task
-          [task]="task"
-          (removeTaskEmitter)="removeTask(i)"
-          (showEditFormEmitter)="showEditForm(i)"
-          (completeTaskEmitter)="completeTask(i)"
-        ></app-task>
+    } @else {
+      <div class="todo__header">
+        <div class="todo__progress">
+          {{ completedTasks }} / {{ tasksLength }}
+        </div>
+        <div class="todo__header-control">
+          <button (click)="removeAllTasks()" class="button button_primary">
+            <svg class="icon">
+              <use href="./assets/icons.svg#icon-delete"></use>
+            </svg>
+          </button>
+          <button (click)="showCreateForm()" class="button button_primary">
+            <svg class="icon">
+              <use href="./assets/icons.svg#icon-plus"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="todo__tasks">
+        @for (task of tasks; track task; let i = $index) {
+          @if (task.day === activeDay) {
+            <app-task
+              [task]="task"
+              (removeTaskEmitter)="removeTask(i)"
+              (showEditFormEmitter)="showEditForm(i)"
+              (completeTaskEmitter)="completeTask(i)"
+            ></app-task>
+          }
         }
-      }
-    </div>
+      </div>
+    }
     @if (isFormShown) {
       <div class="todo__form-container">
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="todo__form">
