@@ -1,8 +1,22 @@
 <div class="todo">
+  <div class="days">
+    @for (day of weekDays; track day) {
+      <button
+        (click)="setCurrentDay(day)"
+        class="days__item"
+        [ngClass]="{
+          days__item_active: activeDay === day,
+          pulse: currentDay === day
+        }"
+      >
+       <span class="days__item-name">{{ day }}</span>
+      </button>
+    }
+  </div>
   <div class="todo__body">
     <div class="todo__header">
       <div class="todo__progress">
-        {{ completedTasks }}/{{ tasks.length }}
+        {{ completedTasks }} / {{ tasksLength }}
       </div>
       <div class="todo__header-control">
         <button (click)="removeAllTasks()" class="button button_primary">
@@ -19,12 +33,14 @@
     </div>
     <div class="todo__tasks">
       @for (task of tasks; track task; let i = $index) {
+        @if(task.day === activeDay) {
         <app-task
           [task]="task"
           (removeTaskEmitter)="removeTask(i)"
           (showEditFormEmitter)="showEditForm(i)"
           (completeTaskEmitter)="completeTask(i)"
         ></app-task>
+        }
       }
     </div>
     @if (isFormShown) {

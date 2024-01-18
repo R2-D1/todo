@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import {TodoForm, TodoFormData} from "./todo.form";
 import {priorities} from "../static-data/priorities";
 import { TaskComponent } from './task/task.component';
+import {NgClass} from "@angular/common";
 
 
 @Component({
@@ -11,7 +12,7 @@ import { TaskComponent } from './task/task.component';
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css'],
     standalone: true,
-    imports: [TaskComponent, FormsModule, ReactiveFormsModule]
+  imports: [TaskComponent, FormsModule, ReactiveFormsModule, NgClass]
 })
 export class TodoComponent implements OnInit {
   public tasks: Task[] = [];
@@ -19,7 +20,11 @@ export class TodoComponent implements OnInit {
   public isFormShown:boolean = false;
   protected isEditMode: boolean = false;
   public taskForEdit: number | null = null;
-  protected completedTasks: number = 0;
+  public weekDays: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  public currentDay: string = this.weekDays[new Date().getDay() - 1];
+  public activeDay: string = this.currentDay;
+  public completedTasks: number = 0;
+  public tasksLength: number = 0;
 
   protected readonly priorities = priorities;
 
@@ -35,13 +40,14 @@ export class TodoComponent implements OnInit {
   }
 
   protected onSubmit(): undefined {
-    this.isEditMode ? this.editTask() : this.addTask()
+    this.isEditMode ? this.editTask() : this.addTask();
   }
 
   public addTask(): undefined {
     const taskData = this.form.getRawValue() as TodoFormData;
 
     const task: Task = {
+      day: this.activeDay,
       name: taskData.name,
       priority: taskData.priority,
       completed: false,
@@ -50,6 +56,7 @@ export class TodoComponent implements OnInit {
     this.tasks.push(task);
     this.sortTasks();
     this.updateStorage();
+    this.countTasks();
     this.isFormShown = false;
   }
 
@@ -100,9 +107,23 @@ export class TodoComponent implements OnInit {
     this.isEditMode = false;
   }
 
-  protected hideForm(): undefined {
+  public hideForm(): undefined {
     this.isFormShown = false;
     this.form.controls.name.setValue(null);
+  }
+
+  public setCurrentDay(day: string): undefined {
+    this.activeDay = day;
+    this.countCompletedTasks();
+    this.countTasks();
+  }
+
+  // ------------------------------
+  // Private Methods
+  // ------------------------------
+
+  private countTasks(): undefined {
+    this.tasksLength = this.tasks.filter(task => task.day === this.activeDay).length;
   }
 
   private updateStorage(): undefined {
@@ -114,11 +135,12 @@ export class TodoComponent implements OnInit {
     if (tasks) {
       this.tasks = JSON.parse(tasks);
       this.countCompletedTasks();
+      this.countTasks();
     }
   }
 
   private countCompletedTasks(): undefined {
-    this.completedTasks = this.tasks.filter(task => task.completed).length;
+    this.completedTasks = this.tasks.filter(task => task.completed && task.day === this.activeDay).length;
   }
 
   private sortTasks(): undefined {
