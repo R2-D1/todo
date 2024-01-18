@@ -9,7 +9,6 @@
   animation: pulse-shadow var(--duration) calc(2 * var(--duration) / 3) linear infinite
 }
 
-
 .pulse::after, .pulse::before {
   content: '';
   position: absolute;
