@@ -6,7 +6,6 @@ import {priorities} from "../static-data/priorities";
 import { TaskComponent } from './task/task.component';
 import {NgClass} from "@angular/common";
 
-
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',

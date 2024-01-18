@@ -12,6 +12,7 @@
   background-color: var(--secondary-color);
   border-radius: 10px;
   padding: 30px;
+  min-height: 400px;
 }
 
 .todo__header {
@@ -102,7 +103,3 @@
 .days__item_active .days__item-name {
   background-color: var(--accent-color);
 }
-
-/*.days__item_current .days__item-name {*/
-/*  background-color: red !important;*/
-/*}*/
