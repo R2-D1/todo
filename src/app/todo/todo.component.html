@@ -33,12 +33,7 @@
           <input type="text" formControlName="name" placeholder="Task name" class="form-input todo__name">
           <select formControlName="priority" class="form-select">
             @for (option of priorities; track option; let first = $first) {
-              @if (first) {
-                {{ 'first' }}
-                <option [value]="option.value" selected>{{ option.name }}</option>
-              } @else {
-                <option [value]="option.value">{{ option.name }}</option>
-              }
+              <option [value]="option.value">{{ option.name }}</option>
             }
           </select>
           <button class="button button_s">

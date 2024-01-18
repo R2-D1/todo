@@ -26,7 +26,7 @@ export class TodoComponent implements OnInit {
   constructor() {
     this.form = new FormGroup<TodoForm>({
       name: new FormControl(null, Validators.required),
-      priority: new FormControl(null, Validators.required)
+      priority: new FormControl(this.priorities[0].value, Validators.required)
     });
   }
 
