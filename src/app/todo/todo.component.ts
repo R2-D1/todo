@@ -9,7 +9,7 @@ import {NgClass} from "@angular/common";
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
-    styleUrls: ['./todo.component.css'],
+    styleUrls: ['../test.component.css'],
     standalone: true,
   imports: [TaskComponent, FormsModule, ReactiveFormsModule, NgClass]
 })
