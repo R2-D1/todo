@@ -16,6 +16,8 @@ export class TaskComponent implements OnInit {
   @Output() showEditFormEmitter: EventEmitter<void> = new EventEmitter<void>();
   @Output() completeTaskEmitter: EventEmitter<void> = new EventEmitter<void>();
 
+  // special for resolve
+
   protected isControlShown: boolean = false;
   protected readonly priorities = priorities;
   protected taskPriorityLabel!: string;

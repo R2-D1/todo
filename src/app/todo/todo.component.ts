@@ -3,7 +3,7 @@ import {Task} from "../models/task.model";
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {TodoForm, TodoFormData} from "./todo.form";
 import {priorities} from "../static-data/priorities";
-import { TaskComponent } from './task/task.component';
+import { TaskComponent } from '../task/task.component';
 import {NgClass} from "@angular/common";
 
 @Component({
