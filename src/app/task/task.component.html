@@ -1,9 +1,4 @@
 <div class="task" [class.task__completed]="task.completed">
-  <div class="task__header">
-    <div class="task__priority task__priority_{{task.priority}}">
-      {{task.completed ? "Зроблено" : taskPriorityLabel}}
-    </div>
-  </div>
   <button (click)="completeTask()" class="button button_primary"><svg class="icon"><use href="./assets/icons.svg#icon-checkmark"></use></svg></button>
   <div class="task__info">
     <p class="task__text">{{task.name}}</p>

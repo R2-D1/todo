@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Task} from "../models/task.model";
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {TodoForm, TodoFormData} from "./todo.form";
-import {priorities} from "../static-data/priorities";
 import { TaskComponent } from '../task/task.component';
 import {NgClass} from "@angular/common";
 
@@ -25,12 +24,9 @@ export class TodoComponent implements OnInit {
   public completedTasks: number = 0;
   public tasksLength: number = 0;
 
-  protected readonly priorities = priorities;
-
   constructor() {
     this.form = new FormGroup<TodoForm>({
       name: new FormControl(null, Validators.required),
-      priority: new FormControl(this.priorities[0].value, Validators.required)
     });
   }
 
@@ -48,7 +44,6 @@ export class TodoComponent implements OnInit {
     const task: Task = {
       day: this.activeDay,
       name: taskData.name,
-      priority: taskData.priority,
       completed: false,
     }
 
@@ -75,7 +70,6 @@ export class TodoComponent implements OnInit {
   public showEditForm(index: number): undefined {
     const task = this.tasks[index];
     this.form.controls.name.setValue(task.name);
-    this.form.controls.priority.setValue(task.priority);
     this.taskForEdit = index;
     this.isEditMode = true;
     this.isFormShown = true;
@@ -89,7 +83,6 @@ export class TodoComponent implements OnInit {
     const taskData = this.form.getRawValue() as TodoFormData;
     const task = this.tasks[this.taskForEdit];
     task.name = taskData.name;
-    task.priority = taskData.priority;
     this.updateStorage();
     this.isFormShown = false;
   }
@@ -144,10 +137,6 @@ export class TodoComponent implements OnInit {
 
   private sortTasks(): undefined {
     this.tasks.sort((a: Task, b: Task) => {
-      if (a.completed === b.completed) {
-        // Both tasks have the same completion status, sort by priority
-        return + a.priority - + b.priority;
-      }
       // Place uncompleted tasks before completed tasks
       return a.completed ? 1 : -1;
     });

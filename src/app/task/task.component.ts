@@ -1,8 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Task} from "../../models/task.model";
-import {priorities} from "../../static-data/priorities";
-
-
+import { Task } from '../models/task.model';
 @Component({
     selector: 'app-task',
     templateUrl: './task.component.html',
@@ -19,16 +16,8 @@ export class TaskComponent implements OnInit {
   // special for resolve
 
   protected isControlShown: boolean = false;
-  protected readonly priorities = priorities;
-  protected taskPriorityLabel!: string;
 
   ngOnInit(): undefined {
-    this.setTaskPriority();
-  }
-
-  protected setTaskPriority(): undefined {
-    console.log(this.task.priority);
-    this.taskPriorityLabel =  this.priorities.find(priority => priority.value === this.task.priority)?.name || '';
   }
 
   protected removeTask(): undefined {

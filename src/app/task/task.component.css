@@ -2,12 +2,6 @@
 
 }
 
-.task__header {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .task__priority {
   padding: 2px 30px;
   min-width: 200px;
