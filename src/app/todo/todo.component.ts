@@ -51,6 +51,7 @@ export class TodoComponent implements OnInit {
     this.sortTasks();
     this.updateStorage();
     this.countTasks();
+    this.form.reset();
     this.isFormShown = false;
   }
 
@@ -58,6 +59,7 @@ export class TodoComponent implements OnInit {
     this.tasks = [];
     this.updateStorage();
     this.completedTasks = 0;
+    this.countTasks();
   }
 
   public removeTask(index: number): undefined {
