@@ -19,12 +19,13 @@ export class TodoComponent implements OnInit {
   protected isEditMode: boolean = false;
   public taskForEdit: number | null = null;
   public weekDays: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  public currentDay: string = this.weekDays[new Date().getDay() - 1];
+  public currentDay: string = this.weekDays[new Date().getDay() === 0 ? 6 : new Date().getDay() - 1];
   public activeDay: string = this.currentDay;
   public completedTasks: number = 0;
   public tasksLength: number = 0;
 
   constructor() {
+    console.log(this.currentDay);
     this.form = new FormGroup<TodoForm>({
       name: new FormControl(null, Validators.required),
     });
